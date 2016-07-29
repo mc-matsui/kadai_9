@@ -41,7 +41,7 @@ mysql_close($link);
 	//投稿件数が1000以上以下判定(※1000件以上の投稿があれば、投稿できない)
 	if ($rows < $max)
 	{
-		print '<input type="submit" value="投稿する">';
+		print '<input type="submit" name="toukou" value="投稿する">';
 	}
 	else
 	{

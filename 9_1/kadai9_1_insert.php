@@ -13,65 +13,89 @@
 </div>
 <br>
 <?php
+//セッション開始
+
+
 //DB接続
 require_once( 'db.php' );
 
-//名前
-$name = htmlspecialchars($_POST["name"], ENT_QUOTES);
-
-//投稿時間
-$timestamp = time() ; //unixタイムスタンプ設定
-$time = date("Y-m-d H:i:s",$timestamp);	//掲示板用時間フォーマット
-//$time = date("Y年m月d日 H時i分s秒",$timestamp);
-
-//タイトル
-$title = htmlspecialchars($_POST["title"], ENT_QUOTES);
-//本文
-$message = htmlspecialchars($_POST["message"], ENT_QUOTES);
-
-//エラー変数初期化
-$error = "";
-//名前エラー
-if ($name == "")
+if (isset($_POST["toukou"]))
 {
-	$error .= "名前を入力してください!!<br>";
-}
-//タイトルエラー
-if ($title == "")
-{
-	$error .= "タイトルを入力してください!!<br>";
-}
-//本文エラー
-if ($message == "")
-{
-	$error .= "本文を入力してください!!<br>";
-}
+	session_start();
+
+	//名前
+	$name = htmlspecialchars($_POST["name"], ENT_QUOTES);
+
+	//投稿時間
+	$timestamp = time() ; //unixタイムスタンプ設定
+	$time = date("Y-m-d H:i:s",$timestamp);	//掲示板用時間フォーマット
+	//$time = date("Y年m月d日 H時i分s秒",$timestamp);
+
+	//タイトル
+	$title = htmlspecialchars($_POST["title"], ENT_QUOTES);
+	//本文
+	$message = htmlspecialchars($_POST["message"], ENT_QUOTES);
+
+	//エラー変数初期化
+	$error = "";
+	//名前エラー
+	if ($name == "")
+	{
+		$error .= "名前を入力してください!!<br>";
+	}
+	//タイトルエラー
+	if ($title == "")
+	{
+		$error .= "タイトルを入力してください!!<br>";
+	}
+	//本文エラー
+	if ($message == "")
+	{
+		$error .= "本文を入力してください!!<br>";
+	}
 
 
-if ($name == "" || $title == "" || $message == "")
-{
-	print <<<EOF
+	if ($name == "" || $title == "" || $message == "")
+	{
+		print <<<EOF
 
-		<form>
-			<p>{$error}</p><br><br>
-			<input type="button" onClick='history.back();' value="戻る">
-		</form>
+			<form>
+				<p>{$error}</p><br><br>
+				<input type="button" onClick='history.back();' value="戻る">
+			</form>
 EOF;
-	exit();
+		exit();
+
+	}
+
+	if (!isset($_SESSION["kaisuu"]))
+	{
+		//DBに挿入
+		$sql = "INSERT INTO `kadai_matsui_original`(`name`,`time`,`title`,`message`)
+				VALUES ('$name','$time','$title','$message')";
+		$result = mysql_query("$sql");
+		$_SESSION["kaisuu"] = 1;
+
+	}
+	else
+	{
+		print "二重投稿です<br>投稿できませんでした。<br>";
+		print "<a href = \"kadai9_1.php\">掲示板に戻る</a>";
+		exit();
+	}
+
+
+
+	print "<p class=\"check\">1件投稿しました</p><br><br>";
+
+	print "<a href = \"kadai9_1.php\">掲示板に戻る</a>";
 
 }
-
-//DBに挿入
-$sql = "INSERT INTO `kadai_matsui_original`(`name`,`time`,`title`,`message`)
-		VALUES ('$name','$time','$title','$message')";
-
-$result = mysql_query("$sql");
-
-
-print "<p class=\"check\">1件投稿しました</p><br><br>";
-
-print "<a href = \"kadai9_1.php\">掲示板に戻る</a>";
-
+else
+{
+	print "投稿できませんでした。<br>";
+	print "<a href = \"kadai9_1.php\">掲示板に戻る</a>";
+}
 
 mysql_close($link);
 ?>

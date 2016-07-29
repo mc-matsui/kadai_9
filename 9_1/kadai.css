@@ -1,0 +1,239 @@
+@CHARSET "UTF-8";
+
+* {
+	font-family: 'Noto Sans Japanese','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/*font-weight: bold;*/
+}
+
+/*ヘッダー*/
+
+.header {
+	background: #4FBCE7;
+	color: #fff;
+	font-weight: bold;
+	padding: 15px 5px;
+	/*position: fixed;
+	top: 0;*/
+	width: 100%;
+	z-index: 3;
+}
+
+.kaisya {
+	position: relative;
+	margin: 0 auto 0px;
+	text-align: center;
+	top: -32px;
+	margin-bottom: -2.5em;
+}
+
+p.syamai {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+a.postPage {
+	position: absolute;
+	right: 80px;
+	top: 13px;
+	text-decoration: none;
+	border: 1px solid #FFF;
+	padding: 0px 45px;
+	color: #FFF;
+	border-radius: 5px;
+	height: 23px;
+	line-height: 24px;
+}
+
+.postPage:hover {
+	background: rgba(255,255,255,0.2);
+}
+
+/*フォーム*/
+
+form {
+	margin: 5% auto 2%;
+	padding: 0.7%;
+	font-weight: bold;
+	color: #525151;
+}
+
+form {
+	margin: 2% auto 2%;
+	padding: 0.7%;
+	font-weight: bold;
+	color: #525151;
+	margin-left: 2%;
+}
+
+form[name="post_insert"] {
+	margin: 1% auto 2%;
+	padding: 0.7%;
+	margin-left: 4%;
+	font-weight: bold;
+	color: #525151;
+}
+
+input[type="text"] {
+	border-radius: 5px;
+	text-shadow: none;
+	border: 1px solid #CCC;
+	padding: 5px;
+}
+
+input[type="submit"] {
+	padding: 7px;
+	font-weight: bold;
+	font-size: 92%;
+	margin-right: 1%;
+	border-radius: 7px;
+}
+
+input[type="reset"] {
+	padding: 7px;
+	font-weight: bold;
+	font-size: 92%;
+	border-radius: 7px;
+}
+
+input[type="button"] {
+	padding: 7px;
+	font-weight: bold;
+	font-size: 92%;
+	border-radius: 7px;
+}
+
+textarea {
+	border-radius: 7px;
+	text-shadow: none;
+}
+
+
+
+/*ページャー*/
+
+div#pagenation {
+	position: relative;
+	overflow: hidden;
+	margin: 0% auto 2.5%;
+}
+
+div#pagenation ul {
+    position:relative;
+    left:50%;
+    float:left;
+    list-style: none;
+}
+
+div#pagenation li {
+    position:relative;
+    left:-50%;
+    float:left;
+}
+
+div#pagenation li a {
+    border:1px solid #CECECE;
+    margin: 0 3px;
+    padding:3px 7px;
+    display: block;
+    text-decoration:none;
+    color: #666666;
+    background: #fff;
+}
+
+div#pagenation li.active {
+    border:solid 1px #666666;
+    color: #FFFFFF;
+    background: #626a71;
+    margin: 0 3px;
+       padding: 3px 7px;
+}
+
+div#pagenation li a:hover {
+    border:solid 1px #666666;
+    color: #FFFFFF;
+    background: #829cb3;
+}
+
+p.csv_check {
+	font-size: 75%;
+	color: #ea0808;
+}
+
+
+/*データリスト*/
+
+p.max {
+	margin-left: 1%;
+}
+
+p.max span {
+	color: #f50d0d;
+}
+
+.dataFlid {
+	border: 1px solid #9FC1FB;
+	width: 98%;
+	margin: 1% auto 1%;
+}
+
+p.id {
+	float: left;
+	background-color: #ffffff;
+	margin-right: 1%;
+	padding-right: 0.5%;
+}
+
+.datalist {
+	overflow: hidden;
+	background-color: #9FC1FB;
+	padding: 0.5%;
+}
+
+p.title {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+p.name {
+	float: left;
+	margin-right: 2%;
+}
+
+p.time {
+	font-size: 83%;
+}
+
+.dataname {
+	overflow: hidden;
+	border-bottom: 1px solid #cccccc;
+}
+
+.mes p {
+    padding: 2%;
+}
+
+p.deletePages {
+    padding: 0;
+    text-align: right;
+    margin-right: 2px;
+    color: #e317e4;
+}
+
+p.deletePages a {
+    color: #e317e4;
+    text-decoration: none;
+}
+
+/*投稿*/
+
+p.check {
+	margin: 5% auto 2%;
+	font-weight: bold;
+	color: #525151;
+}
+

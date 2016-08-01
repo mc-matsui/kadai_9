@@ -35,6 +35,8 @@ if (isset($_POST["toukou"]))
 	$title = htmlspecialchars($_POST["title"], ENT_QUOTES);
 	//本文
 	$message = htmlspecialchars($_POST["message"], ENT_QUOTES);
+	//改行を反映
+	$message = nl2br($message);
 
 	//エラー変数初期化
 	$error = "";

@@ -1,4 +1,12 @@
 <?php
+
+// セッションを開始する
+session_start();
+// トークンを発行する
+$token = md5(uniqid(rand(), true));
+// トークンをセッションに保存
+$_SESSION['token'] = $token;
+
 require_once( 'db.php' );
 $max = 1000; //ページ全体での表示件数
 
@@ -42,6 +50,7 @@ mysql_close($link);
 	if ($rows < $max)
 	{
 		print '<input type="submit" name="toukou" value="投稿する">';
+		print '<input type="hidden" name="token" value="' .$token . '">';
 	}
 	else
 	{
